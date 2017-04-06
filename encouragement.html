@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>KGP Sky of Thoughts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:url"                content="https://skyofthoughts.github.io" />
 <meta property="og:type"               content="website" />
 <meta property="og:title"              content="KGP Sky of Thoughts" />
@@ -35,7 +36,7 @@
 <div id="innercontent">
 
 <div class="messages" id="goeshere"></div>
-<button type="button" class="btn btn-primary" onclick="next();" style="position:absolute;top:85vh">Next</button>
+<button type="button" class="btn btn-primary" id="nxtbtn" nclick="next();" style="position:absolute;top:85vh">Next</button>
 <div class="footerp">
 
 <a href="thoughts.html">Sky of Thoughts</a> | <span class="floatnew" onclick="floatnew();">Float New Encouragement</span> | <a href="resources.html">Resources</a>  | <a href="index.html">Home</a>
@@ -128,9 +129,15 @@ mover.prototype.show=function(){
 	ellipse(this.cx+this.dispx,this.cy+this.dispy,this.size,this.size);
 }
 var xaxu=[];
+$('body').on("swipe",function(){
+   
+next();
+});
+
+
 function next(){
 	var h=parseInt(Math.random()*arr.length);
-	$('#goeshere').html('<p class="mainmsg">'+arr[h]["encouragement"]+'</p>'+'<p>'+arr[h]["name"]+' | '+arr[h]["contact"]+'</p>');
+	$('#goeshere').html('<p class="mainmsg col-xs-12 col-sm-12 col-md-8">'+arr[h]["encouragement"]+'</p>'+'<p>'+arr[h]["name"]+' | '+arr[h]["contact"]+'</p>');
 }
 function setup() { 
 
@@ -167,7 +174,7 @@ function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- $('#content').html('<div style="font-size:5em;color:white;font-family:Cutive Mono;margin-top:10%">Extremely sorry. The website is not optimised for mobile devices. Please use a computer or laptop</div>');
+$('#nxtbtn').hide();
 }
 </script>
 </html>

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>KGP Sky of Thoughts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:url"                content="https://skyofthoughts.github.io" />
 <meta property="og:type"               content="website" />
 <meta property="og:title"              content="KGP Sky of Thoughts" />
@@ -33,11 +34,12 @@
 
 <div id="content" class="container">
 <div id="innercontent">
-<h1 class="heading">the kgp sky of thoughts</h1>
-<p class="subtext">It is easy to feel like nobody understands or cares in KGP. Its enchanting soltitude often turns into biting loneliness. <br><br>Social media allows people to project fabricated identities that make us think that everybody around us is happy, successful and smart. But in truth, behind these projections, we are more or less alike - fragile human beings trying to make through the world. <br><br> We all feel bouts of insecurities, isolation and fears that we don't share with everyone else. The KGP Sky of thoughts is a safe place where you can shout out your thoughts without feeling judged, analysed or criticized, anonymously. I want you to know that you are not alone in the struggle. That inner voice that keeps telling you that you don't deserve to be loved is deceiving. Come, let me take you on a walk.</p>
-
+<h1 class="heading col-md-12 col-sm-12 row">the kgp sky of thoughts</h1>
+<p class="subtext col-md-8 col-xs-12 row">It is easy to feel like nobody understands or cares in KGP. Its enchanting soltitude often turns into biting loneliness. <br><br>Social media allows people to project fabricated identities that make us think that everybody around us is happy, successful and smart. But in truth, behind these projections, we are more or less alike - fragile human beings trying to make through the world. <br><br> We all feel bouts of insecurities, isolation and fears that we don't share with everyone else. The KGP Sky of thoughts is a safe place where you can shout out your thoughts without feeling judged, analysed or criticized, anonymously. I want you to know that you are not alone in the struggle. That inner voice that keeps telling you that you don't deserve to be loved is deceiving. Come, let me take you on a walk.</p>
+<div class="col-md-12 row neeche">
 <span class="button">Proceed</span>
 <span class="footer">Made by <a href="http://iashris.com">iashris</a></span>
+</div>
 </div>
 </div>
 
@@ -67,7 +69,7 @@ $('.button').on('click',function(){
 	PRESSED=true;
 	
 	$( "#innercontent" ).fadeOut( "slow", function() {
-	$("#content").html("<div class='messages'>Press spacebar to proceed.</div>");
+	$("#content").html("<div class='messages'>Press spacebar or swipe to proceed.</div>");
 });
 });
 var o=0;
@@ -79,7 +81,7 @@ $('body').keyup(function(e){
        // user has pressed space
 
     $('#content').fadeOut('slow', function() {
-    $('#content').html("<div class='messages'>"+ttt[o]+"</div>");
+    $('#content').html("<div class='messages col-md-6 col-sm-12 col-xs-12'>"+ttt[o]+"</div>");
     $('#content').fadeIn('slow');
      o++;
 });
@@ -87,11 +89,22 @@ $('body').keyup(function(e){
  }
 });
 
+$('body').on("swipe",function(){
+   
+
+    $('#content').fadeOut('slow', function() {
+    $('#content').html("<div class='messages'>"+ttt[o]+"</div>");
+    $('#content').fadeIn('slow');
+     o++;
+});
+
+ });
+
 
 function skip(v){
 	$('#content').fadeOut('slow', function() {
 		var msg=v===true?'Thank you. This message will now float away to the sky.':'No issues.';
-    $('#content').html("<div class='messages'>"+msg+" You will now be taken to the sky of thoughts. The sky of thought shows that pain and sadness are universal part of human existence. We all are together in facing them. Come, let's go. <br><br> <a href='thoughts.html'>Proceed</a></div>");
+    $('#content').html("<div class='messages col-md-6 col-sm-12 col-xs-12'>"+msg+" You will now be taken to the sky of thoughts. The sky of thought shows that pain and sadness are universal part of human existence. We all are together in facing them. Come, let's go. <br><br> <a href='thoughts.html'>Proceed</a></div>");
     $('#content').fadeIn('slow');
 });
 }
@@ -172,8 +185,6 @@ clicka.push(new ymover(dispY));
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- $('#content').html('<div style="font-size:5em;color:white;font-family:Cutive Mono;margin-top:10%">Extremely sorry. The website is not optimised for mobile devices. Please use a computer or laptop</div>');
-}
+
 </script>
 </html>

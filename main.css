@@ -9,7 +9,6 @@ font-size: 6em;
 font-family: 'La Belle Aurore' !important;
 }
 .subtext{
-	width: 70%;
 	margin-top: 5vh;
 	font-family: 'Cutive Mono' !important;
 	text-align: justify;
@@ -23,7 +22,9 @@ canvas {
 			position: relative; 
 			z-index: 2; 
 		}
-
+.neeche{
+	margin-bottom: 10vh;
+}
 .button{
 	margin-top: 5%;
 	padding:10px 30px;
@@ -51,10 +52,8 @@ textarea{
 	background-color: transparent;
 }
 .messages{
-	width: 60%;
 	margin-top: 10%;
 	font-family: 'Cutive Mono' !important;
-
 }
 .msgbtn{
 	color:#0095ff;
@@ -69,11 +68,11 @@ textarea{
 	top:85vh;
 	font-size: 1.4em;
 	font-family: 'La Belle Aurore' !important;
-
+}
 #goeshere{
 	position: absolute;
 }
-}
+
 .floatnew{
 		cursor: pointer;
 }
