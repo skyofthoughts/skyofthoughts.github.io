@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KGP Sky of Thoughts</title>
+</head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive+Mono|La+Belle+Aurore" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<audio src="bg.mp3" autoplay loop>
+<p>If you are reading this, it is because your browser does not support the audio element.     </p>
+</audio>
+
+
+<div id="content" class="container">
+<div id="innercontent">
+<div id="reslist">
+<h3>Helpline Numbers</h3>
+<ol>
+<li><a href="http://www.aasra.info/">AASRA</a> : 91-22-27546669</li>
+<li><a href="http://indianexpress.com/article/trending/this-is-serious/list-of-suicide-helplines-in-india/">Regional Helpline numbers</a></li>
+</ol>
+<h3>Helpful Contacts</h3>
+<ol>
+<li>KGP Support Group : <a href="https://www.facebook.com/groups/690516374466068/">Hope @ IITKGP</a></li>
+<li>KGP LGBTQ+ Support Group : <a href="https://www.facebook.com/ambar.iitkgp/">Ambar</a></li>
+<li>Counselling Centre : <a href="http://www.counsellingcentre.iitkgp.ac.in/topic.html?id=6">Visiting Hours</a></li>
+<li>Contact List : <a href="https://gowustl-my.sharepoint.com/personal/k_mitra_wustl_edu/_layouts/15/WopiFrame.aspx?docid=1f7a11098e65f44ad8a4cbfbc7317a928&authkey=AdmDW88hs5QhvKoI__Ed25c&action=view">here</a></li>
+<li><a href="http://thenicestplaceontheinter.net/">Nicest Place On The Internet</a></li>
+</ol>
+<h3>Reading List</h3>
+<ol>
+<li>Youtube channel on mental well being, philosophy and psychology : <a href="https://www.youtube.com/user/schooloflifechannel">School of Life</a></li>
+<li>TED Talks Playlist on Anxiety/Depression : <a href="https://www.youtube.com/playlist?list=PLIarbzft73-MdX4oVSEAA8Lz-wYbW3Fod">here</a></li>
+</ol>
+
+
+</div>
+
+<div class="footerp">
+
+<a href="thoughts.html">Float New Thought</a> | <a href="encouragement.html">Voices of Encouragement</a> | <a href="resources.html">Resources</a> | <a href="index.html">Home</a>
+
+</div>
+
+
+</div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <p id="bodyhere">Some text in the modal.</p>
+      </div>
+      <div id="commentbar"></div>
+      <div id="keybar"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+var mover=function(msg,com,ki,coms){
+	this.size=random(6);
+	this.cx=random(-width*1.5,width);
+	this.cy=random(-height*1.5,height*2);
+	this.dispx=0;
+	this.dispy=0;
+	this.dep=random(20);
+	this.seed=parseInt(random(2000));
+}
+
+mover.prototype.move=function(){
+	this.cx+=(noise(this.seed)-0.5)*this.dep/50;
+	this.cy+=(noise(this.seed+5768)-0.5)*this.dep/50;
+	this.dispx=this.dep*map(mouseX,0,width,-1,1);
+	this.dispy=this.dep*map(mouseY,0,height,-1,1);
+}
+
+
+
+mover.prototype.show=function(){
+	fill("#f2ca66");
+	ellipse(this.cx+this.dispx,this.cy+this.dispy,this.size,this.size);
+}
+var xaxu=[];
+var ruzu=[];
+function setup() { 
+
+textSize(19);
+	noStroke();
+	createCanvas(windowWidth, windowHeight);
+
+
+for(var i=0;i<600;i++)xaxu.push(new mover());
+
+}
+var angle=0;var twist=false;
+function draw() {
+	background(20);
+	translate(width*0.7,height/2);
+	rotate(angle);
+	for(var i=0;i<600;i++){
+		xaxu[i].move();
+		xaxu[i].show();
+	}
+	if(twist==true){
+		angle+=0.1;
+		if(angle>TWO_PI){
+			twist=false;
+			angle=0;
+		}
+	}
+	noFill();
+	strokeWeight(2);
+	stroke("#f2ca66");
+	ellipse(0,0,200,200);
+	noStroke();
+	fill(255);
+	for(var i=0;i<ruzu.length;i++)ellipse(100*cos(ruzu[i]),100*sin(ruzu[i]),12,12);
+
+
+}
+function mouseClicked(){
+	twist=true;
+	ruzu.push(random(TWO_PI));
+}
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</html>

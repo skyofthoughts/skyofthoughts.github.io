@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KGP Sky of Thoughts</title>
+</head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive+Mono|La+Belle+Aurore" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<body style="font-family:'Cutive Mono'">
+<audio src="bg.mp3" autoplay loop>
+<p>If you are reading this, it is because your browser does not support the audio element.     </p>
+</audio>
+
+
+<div id="content" class="container">
+<div id="innercontent">
+<div class="messages" id="goeshere"></div>
+
+
+<div class="footerp">
+
+<span class="floatnew" onclick="floatnew();">Float New Thought</span> | <a href="encouragement.html">Voices of Encouragement</a> | <a href="resources.html">Resources</a> | <a href="index.html">Home</a>
+
+</div>
+
+
+</div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="padding:0px 25px">
+      <div class="modal-body">
+        <p id="bodyhere">Some text in the modal.</p>
+      </div>
+      <div id="commentbar"></div>
+      <div id="keybar"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDIqOo1dR5ylR6xeycO9ZFljD-TzhSZlOU",
+    authDomain: "skyofthoughts17.firebaseapp.com",
+    databaseURL: "https://skyofthoughts17.firebaseio.com",
+    projectId: "skyofthoughts17",
+    storageBucket: "skyofthoughts17.appspot.com",
+    messagingSenderId: "497409203328"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+var mover=function(msg,com,ki,coms){
+	this.msg=msg;
+	this.key=ki;
+	this.com=com;
+	this.size=2*map(msg.length,1,300,4,20);
+	this.posx=random(width);
+	this.posy=random(height);
+	this.seed=parseInt(random(2000));
+	if(coms)this.coms=coms;
+	this.high=false;
+}
+function floatnew(){
+	$('#bodyhere').html("<textarea class='form-control' placeholder='How are you feeling?'></textarea><br><input type='checkbox'> Allow comments<span style='float:right'><span onclick='submit();' class='msgbtn'>Submit</span></span>");
+	$('#myModal').modal('show');
+}
+function submit(){
+var databaseref = firebase.database().ref();
+var thoughtsref=databaseref.child('thoughts');
+var data={
+	"thought":$('textarea').val(),
+	"allowcomments":$('input[type="checkbox"]').is(":checked")
+}
+thoughtsref.push(data);
+$('#myModal').modal('hide');
+}
+mover.prototype.move=function(){
+	this.posx+=(1*(noise(this.seed+frameCount/10)-0.5));
+	this.posy+=(1*(noise(this.seed+frameCount/12)-0.5));
+
+	if(this.posx<this.size)this.posx=this.size;
+	if(this.posx>width-this.size)this.posx=width-this.size;
+	if(this.posy<this.size)this.posy=this.size;
+	if(this.posy>height-this.size)this.posy=height-this.size;
+	if(dist(mouseX,mouseY,this.posx,this.posy)<this.size){
+		$('#goeshere').html(this.msg);
+		this.high=true;
+	}
+	else{
+		this.high=false;
+	}
+
+	if(mouseIsPressed){
+		if(dist(mouseX,mouseY,this.posx,this.posy)<this.size){
+			//clicked
+			$('#bodyhere').html('<h2>'+this.msg+'</h2>');
+			if(this.com){
+				kk=this.key;
+				//show comment bar
+
+				if(this.coms){
+					ggg=this.coms;
+					for(var v in this.coms){
+						$('#bodyhere').append('<div class="well">'+ggg[v]["text"]+'</div>');
+					}
+				}
+				$('#commentbar').html("<input type='text' class='form-control' id='cmnt' placeholder='Add comment'><br><button class='btn btn-success' onclick='comment();'>Submit</button>");
+			}
+			else{
+				$('#commentbar').html('');
+			}
+			$('#myModal').modal('show');
+		}
+	}
+}
+
+
+function comment(){
+
+	var comnt=$('#cmnt').val();
+	var databaseref = firebase.database().ref();
+var thoughtsref=databaseref.child('thoughts/'+kk+'/comments');
+thoughtsref.push({"text":comnt});
+
+$('#myModal').modal('hide');
+
+
+}
+mover.prototype.show=function(){
+	//text(this.msg,this.posx,this.posy);
+	var ff=this.high?'#f2ca66':180;
+	fill(ff);
+	ellipse(this.posx,this.posy,this.size,this.size);
+}
+var xaxu=[];
+
+function setup() { 
+fill(255);
+textSize(19);
+
+	noStroke();
+	createCanvas(windowWidth, windowHeight);
+	var databaseref = firebase.database().ref();
+	var thoughtsref=databaseref.child('thoughts');
+
+
+	arr=[];
+	thoughtsref.on("value", function(snapshot, prevChildKey) {
+		arr=[];
+  		var newPost = snapshot.val();
+  		arr = Object.keys(newPost).map(function (key) { return {"key":key,"post":newPost[key]} });
+  		for(var i=0;i<arr.length;i++)xaxu.push(new mover(arr[i]["post"]["thought"],arr[i]["post"]["allowcomments"],arr[i]["key"],arr[i]["post"]["comments"]));
+  });
+
+
+
+
+
+	
+}
+function draw() {
+	background(20);
+	
+	for(var i=0;i<arr.length;i++){
+		xaxu[i].move();
+		xaxu[i].show();
+	}
+
+
+
+}
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KGP Sky of Thoughts</title>
+</head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive+Mono|La+Belle+Aurore" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<audio src="bg.mp3" autoplay loop>
+<p>If you are reading this, it is because your browser does not support the audio element.     </p>
+</audio>
+
+
+<div id="content" class="container">
+<div id="innercontent">
+<h1 class="heading">the kgp sky of thoughts</h1>
+<p class="subtext">It is easy to feel like nobody understands or cares in KGP. Its enchanting soltitude often turns into biting loneliness. <br><br>Social media allows people to project fabricated identities that make us think that everybody around us is happy, successful and smart. But in truth, behind these projections, we are more or less alike - fragile human beings trying to make through the world. <br><br> We all feel bouts of insecurities, isolation and fears that we don't share with everyone else. The KGP Sky of thoughts is a safe place where you can shout out your thoughts without feeling judged, analysed or criticized, anonymously. I want you to know that you are not alone in the struggle. That inner voice that keeps telling you that you don't deserve to be loved is deceiving. Come, let me take you on a walk.</p>
+
+<span class="button">Proceed</span>
+<span class="footer">Made by <a href="http://iashris.com">iashris</a></span>
+</div>
+</div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDIqOo1dR5ylR6xeycO9ZFljD-TzhSZlOU",
+    authDomain: "skyofthoughts17.firebaseapp.com",
+    databaseURL: "https://skyofthoughts17.firebaseio.com",
+    projectId: "skyofthoughts17",
+    storageBucket: "skyofthoughts17.appspot.com",
+    messagingSenderId: "497409203328"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+var PRESSED=false;
+$('.button').on('click',function(){
+	PRESSED=true;
+	
+	$( "#innercontent" ).fadeOut( "slow", function() {
+	$("#content").html("<div class='messages'>Press spacebar to proceed.</div>");
+});
+});
+var o=0;
+	var ttt=["We exist too much in the minds of others, worrying constantly about what others are thinking of us.","But the truth is that our needlessly tense and preciously brief lives have no meaning other than what we make of them.","To the infinitely large galaxies and stars, our anxieties, sorrows, joys and tensions are insignificant.","Come, set free these thoughts overloading your brain. Let them float away in the sky of thoughts.","A box will pop up now where you can put the heart aches, burdens and anxieties troubing you. Don't worry, nobody will be able to judge, comment or criticize it.","<textarea class='form-control' placeholder='How are you feeling?'></textarea><br><input type='checkbox'> Allow comments<span style='float:right'><span onclick='submit();' class='msgbtn'>Submit</span> | <span onclick='skip(false);' class='msgbtn'>Skip</span></span>"];
+
+
+$('body').keyup(function(e){
+   if(e.keyCode == 32 && PRESSED && o<ttt.length){
+       // user has pressed space
+
+    $('#content').fadeOut('slow', function() {
+    $('#content').html("<div class='messages'>"+ttt[o]+"</div>");
+    $('#content').fadeIn('slow');
+     o++;
+});
+
+ }
+});
+
+
+function skip(v){
+	$('#content').fadeOut('slow', function() {
+		var msg=v===true?'Thank you. This message will now float away to the sky.':'No issues.';
+    $('#content').html("<div class='messages'>"+msg+" You will now be taken to the sky of thoughts. The sky of thought shows that pain and sadness are universal part of human existence. We all are together in facing them. Come, let's go. <br><br> <a href='thoughts.html'>Proceed</a></div>");
+    $('#content').fadeIn('slow');
+});
+}
+
+function submit(){
+var databaseref = firebase.database().ref();
+var thoughtsref=databaseref.child('thoughts');
+var data={
+	"thought":$('textarea').val(),
+	"allowcomments":$('input[type="checkbox"]').is(":checked")
+}
+thoughtsref.push(data);
+skip(true);
+}
+
+var ymover=function(d){
+	this.y=height*0.7+d;
+	this.x=0.4*width;
+}
+ymover.prototype.move=function(){
+	this.x+=0.5;
+}
+ymover.prototype.show=function(){
+	stroke('#f2ca66');
+	strokeWeight(0.7);
+	noFill();
+	var si=map(abs(frameCount%20-10),0,10,4,8);
+	if(this.x<width)ellipse(this.x,this.y,si,si);
+	noStroke();
+}
+var mover=function(){
+	this.radius=Math.random()*5;
+	this.posx=Math.random()*width;
+	this.posy=Math.random()*1000;
+	this.vel=Math.random()*1;
+}
+mover.prototype.move=function(){
+	this.posx+=this.vel;
+	//#f2ca66
+}
+mover.prototype.show=function(){
+	if(random(5)<0.5)fill(random(255));
+	else fill(200);
+	ellipse(this.posx,this.posy,this.radius,this.radius);
+	if(this.posx>width)this.posx=0;
+
+}
+var xaxu=[];
+var clicka=[];
+function setup() { 
+	noStroke();
+	createCanvas(windowWidth, windowHeight);
+	for(var i=0;i<200;i++)xaxu.push(new mover());
+	
+}
+function draw() {
+	background(20);
+	
+	for(var i=0;i<200;i++){
+		xaxu[i].move();
+		xaxu[i].show();
+	}
+		for(var j=0;j<clicka.length;j++){
+		clicka[j].move();
+		clicka[j].show();
+	}
+	dispY=map(sin(frameCount/80),-1,1,-90,90);
+
+	fill('#f2ca66');
+	ellipse(0.4*width,height*0.7+dispY,10,10);
+	if(PRESSED && frameCount%10==0)clicka.push(new ymover(dispY));
+
+
+}
+function mousePressed(){
+clicka.push(new ymover(dispY));
+}
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</html>

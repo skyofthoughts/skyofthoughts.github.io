@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KGP Sky of Thoughts</title>
+</head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive+Mono|La+Belle+Aurore" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<audio src="bg.mp3" autoplay loop>
+<p>If you are reading this, it is because your browser does not support the audio element.     </p>
+</audio>
+
+
+<div id="content" class="container">
+<div id="innercontent">
+
+<div class="messages" id="goeshere"></div>
+<button type="button" class="btn btn-primary" onclick="next();" style="position:absolute;top:85vh">Next</button>
+<div class="footerp">
+
+<a href="thoughts.html">Sky of Thoughts</a> | <span class="floatnew" onclick="floatnew();">Float New Encouragement</span> | <a href="resources.html">Resources</a>  | <a href="index.html">Home</a>
+
+</div>
+
+
+</div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="padding:0px 25px">
+      <div class="modal-body">
+        <p id="bodyhere">What would your advice be for people in the campus who are going through a hard time? Share your story of empathy and encouragement with them.</p>
+      </div>
+
+      	<textarea class='form-control' id="enco"></textarea><br>
+
+      <input type="text" class='form-control' placeholder="Your Name (Optional)" id="naam"><br>
+      <input type="text" class='form-control' placeholder="Email/FB ID/Phone Number" id="contact">
+      <div class="modal-footer">
+      <button type="button" class="btn btn-success" onclick="submit();">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDIqOo1dR5ylR6xeycO9ZFljD-TzhSZlOU",
+    authDomain: "skyofthoughts17.firebaseapp.com",
+    databaseURL: "https://skyofthoughts17.firebaseio.com",
+    projectId: "skyofthoughts17",
+    storageBucket: "skyofthoughts17.appspot.com",
+    messagingSenderId: "497409203328"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+var mover=function(){
+	this.size=random(2,6);
+	this.cx=random(width);
+	this.cy=random(height);
+	this.dispx=0;
+	this.dispy=0;
+	this.dep=random(20);
+	this.seed=parseInt(random(2000));
+}
+
+mover.prototype.move=function(){
+	this.cx+=(noise(this.seed)-0.5)*this.dep/50;
+	this.cy+=(noise(this.seed+5768)-0.5)*this.dep/50;
+	this.dispx=this.dep*map(mouseX,0,width,-1,1);
+	this.dispy=this.dep*map(mouseY,0,height,-1,1);
+}
+
+function floatnew(){
+	$('#myModal').modal('show');
+}
+function submit(){
+var databaseref = firebase.database().ref();
+var thoughtsref=databaseref.child('encouragement');
+var data={
+	"encouragement":$('textarea').val(),
+	"name":$('#naam').val(),
+	"contact":$('#contact').val()
+}
+thoughtsref.push(data);
+$('#myModal').modal('hide');
+}
+
+mover.prototype.show=function(){
+	fill("#f2ca66");
+	ellipse(this.cx+this.dispx,this.cy+this.dispy,this.size,this.size);
+}
+var xaxu=[];
+function next(){
+	var h=parseInt(Math.random()*arr.length);
+	$('#goeshere').html('<p class="mainmsg">'+arr[h]["encouragement"]+'</p>'+'<p>'+arr[h]["name"]+' | '+arr[h]["contact"]+'</p>');
+}
+function setup() { 
+
+textSize(19);
+	noStroke();
+	createCanvas(windowWidth, windowHeight);
+	var databaseref = firebase.database().ref();
+	var thoughtsref=databaseref.child('encouragement');
+	arr=[];
+	thoughtsref.on("value", function(snapshot, prevChildKey) {
+		arr=[];
+  		var newPost = snapshot.val();
+  		arr = Object.keys(newPost).map(function (key) { return newPost[key]});
+  		next();
+  });
+
+
+for(var i=0;i<200;i++)xaxu.push(new mover());
+
+}
+function draw() {
+	background(20);
+	
+	for(var i=0;i<200;i++){
+		xaxu[i].move();
+		xaxu[i].show();
+	}
+
+
+
+}
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</html>
