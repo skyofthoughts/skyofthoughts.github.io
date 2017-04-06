@@ -92,7 +92,7 @@ var mover=function(msg,com,ki,coms){
 	this.msg=msg;
 	this.key=ki;
 	this.com=com;
-	this.size=2*map(msg.length,1,300,4,20);
+	this.size=2*map(msg.length,1,600,7,20);
 	this.posx=random(width);
 	this.posy=random(height);
 	this.seed=parseInt(random(2000));
@@ -167,7 +167,7 @@ $('#myModal').modal('hide');
 }
 mover.prototype.show=function(){
 	//text(this.msg,this.posx,this.posy);
-	var ff=this.high?'#f2ca66':180;
+	var ff=this.high?'rgba(242,202,102,0.5)':'rgba(180,180,180,0.5)';
 	fill(ff);
 	ellipse(this.posx,this.posy,this.size,this.size);
 }
