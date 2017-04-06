@@ -58,10 +58,12 @@
   firebase.initializeApp(config);
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
+
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 var PRESSED=false;
@@ -89,16 +91,16 @@ $('body').keyup(function(e){
  }
 });
 
-$('body').on("swipe",function(){
-   
 
-    $('#content').fadeOut('slow', function() {
+window.addEventListener('touchstart', function() {
+  if(PRESSED && o<ttt.length){
+  	$('#content').fadeOut('slow', function() {
     $('#content').html("<div class='messages'>"+ttt[o]+"</div>");
     $('#content').fadeIn('slow');
      o++;
+  }
 });
 
- });
 
 
 function skip(v){

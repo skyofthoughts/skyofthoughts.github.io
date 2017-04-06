@@ -129,9 +129,8 @@ mover.prototype.show=function(){
 	ellipse(this.cx+this.dispx,this.cy+this.dispy,this.size,this.size);
 }
 var xaxu=[];
-$('body').on("swipe",function(){
-   
-next();
+window.addEventListener('touchstart', function() {
+  next();
 });
 
 
