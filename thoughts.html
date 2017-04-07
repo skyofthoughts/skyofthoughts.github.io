@@ -142,7 +142,7 @@ mover.prototype.move=function(){
 		this.high=false;
 	}
 
-	if(mouseIsPressed){
+	if(mouseIsPressed && $('#myModal').hasClass('in')==false){
 		if(dist(mouseX,mouseY,this.posx,this.posy)<this.size){
 			//clicked
 			$('#bodyhere').html('<h5>'+this.msg+'</h5>');
