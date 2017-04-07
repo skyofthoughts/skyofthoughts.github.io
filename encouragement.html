@@ -36,7 +36,7 @@
 <div id="innercontent">
 
 <div class="messages" id="goeshere"></div>
-<button type="button" class="btn btn-primary" id="nxtbtn" nclick="next();" style="position:absolute;top:85vh">Next</button>
+<button type="button" class="btn btn-primary" id="nxtbtn" onclick="next();" style="position:absolute;top:85vh">Next</button>
 <div class="footerp">
 
 <a href="thoughts.html">Sky of Thoughts</a> | <span class="floatnew" onclick="floatnew();">Float New Encouragement</span> | <a href="resources.html">Resources</a>  | <a href="index.html">Home</a>
@@ -133,10 +133,11 @@ window.addEventListener('touchstart', function() {
   next();
 });
 
-
+var pressa=-1;
 function next(){
-	var h=parseInt(Math.random()*arr.length);
-	$('#goeshere').html('<p class="mainmsg col-xs-12 col-sm-12 col-md-8">'+arr[h]["encouragement"]+'</p>'+'<p>'+arr[h]["name"]+' | '+arr[h]["contact"]+'</p>');
+	pressa++;
+	var h=arr[pressa%arr.length];
+	$('#goeshere').html('<p class="mainmsg col-xs-12 col-sm-12 col-md-8">'+h["encouragement"]+'</p>'+'<p>'+h["name"]+' | '+h["contact"]+'</p>');
 }
 function setup() { 
 
