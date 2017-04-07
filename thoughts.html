@@ -186,7 +186,18 @@ mover.prototype.show=function(){
 	var daca=(new Date().getTime()-this.t<25200000)?'rgba(69,132,254,0.5)':'rgba(180,180,180,0.5)';
 	var ff=this.high?'rgba(242,202,102,0.5)':daca;
 	fill(ff);
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ var ismobile=true;
+}
+else{
+	var ismobile=false;
+}
+	if(this.msg.length<15 && ismobile==false){
+		text(this.msg,this.posx+20*(noise(this.seed+frameCount/100)-0.5)-20,this.posy+20*(noise(this.seed+4567+frameCount/100)-0.5)+5);
+	}
+	else{
 	ellipse(this.posx+20*(noise(this.seed+frameCount/100)-0.5),this.posy+20*(noise(this.seed+4567+frameCount/100)-0.5),this.size,this.size);
+}
 }
 var xaxu=[];
 
