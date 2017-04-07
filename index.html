@@ -115,9 +115,11 @@ function skip(v){
 function submit(){
 var databaseref = firebase.database().ref();
 var thoughtsref=databaseref.child('thoughts');
+var jjj=new Date.getTime();
 var data={
 	"thought":$('textarea').val(),
-	"allowcomments":$('input[type="checkbox"]').is(":checked")
+	"allowcomments":$('input[type="checkbox"]').is(":checked"),
+	"tim":jjj
 }
 thoughtsref.push(data);
 skip(true);

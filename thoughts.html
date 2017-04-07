@@ -88,7 +88,7 @@
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
-var mover=function(msg,com,ki,coms){
+var mover=function(msg,com,ki,coms,t){
 	this.msg=msg;
 	this.key=ki;
 	this.com=com;
@@ -98,6 +98,12 @@ var mover=function(msg,com,ki,coms){
 	this.seed=parseInt(random(2000));
 	if(coms)this.coms=coms;
 	this.high=false;
+	if(t==undefined){
+		this.t=0;
+	}
+	else{
+		this.t=t;
+	}
 }
 function floatnew(){
 	$('#bodyhere').html("<textarea class='form-control' placeholder='How are you feeling?'></textarea><br><input type='checkbox'> Allow comments<span style='float:right'><span onclick='submit();' class='msgbtn'>Submit</span></span>");
@@ -106,9 +112,11 @@ function floatnew(){
 function submit(){
 var databaseref = firebase.database().ref();
 var thoughtsref=databaseref.child('thoughts');
+var jjj=new Date.getTime();
 var data={
 	"thought":$('textarea').val(),
-	"allowcomments":$('input[type="checkbox"]').is(":checked")
+	"allowcomments":$('input[type="checkbox"]').is(":checked"),
+	"tim":jjj
 }
 thoughtsref.push(data);
 $('#myModal').modal('hide');
@@ -169,7 +177,8 @@ $('#myModal').modal('hide');
 }
 mover.prototype.show=function(){
 	//text(this.msg,this.posx,this.posy);
-	var ff=this.high?'rgba(242,202,102,0.5)':'rgba(180,180,180,0.5)';
+	var daca=(new Date().getTime-this.t<25200000)?'rgba(77,144,254,0.5)':'rgba(180,180,180,0.5)';
+	var ff=this.high?'rgba(242,202,102,0.5)':daca;
 	fill(ff);
 	ellipse(this.posx+20*(noise(this.seed+frameCount/100)-0.5),this.posy+20*(noise(this.seed+4567+frameCount/100)-0.5),this.size,this.size);
 }
@@ -190,7 +199,7 @@ textSize(19);
 		arr=[];
   		var newPost = snapshot.val();
   		arr = Object.keys(newPost).map(function (key) { return {"key":key,"post":newPost[key]} });
-  		for(var i=0;i<arr.length;i++)xaxu.push(new mover(arr[i]["post"]["thought"],arr[i]["post"]["allowcomments"],arr[i]["key"],arr[i]["post"]["comments"]));
+  		for(var i=0;i<arr.length;i++)xaxu.push(new mover(arr[i]["post"]["thought"],arr[i]["post"]["allowcomments"],arr[i]["key"],arr[i]["post"]["comments"],arr[i]["post"]["tim"]));
   });
 
 
