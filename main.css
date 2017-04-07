@@ -1,7 +1,7 @@
 body{
 
 	background: #141414;
-	color: #bbb!important;
+	color: #aaa;
 }
 .heading{
 	margin-top: 14vh;
@@ -54,6 +54,7 @@ textarea{
 .messages{
 	margin-top: 10%;
 	font-family: 'Cutive Mono' !important;
+	color:#f1f1f1;
 }
 .msgbtn{
 	color:#0095ff;
@@ -83,4 +84,15 @@ textarea{
 }
 .mainmsg{
 	font-size: 1.2em;
+}
+h5{
+	color:#999!important;
+	font-family: 'Helvetica'!important;
+	line-height: 1.42!important;
+}
+.well{
+	border:0;
+	background: #ccc;
+	color:#999;
+	font-family: 'Helvetica'!important;
 }
