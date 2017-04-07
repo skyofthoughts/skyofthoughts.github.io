@@ -139,7 +139,10 @@ mover.prototype.move=function(){
 				if(this.coms){
 					ggg=this.coms;
 					for(var v in this.coms){
-						$('#bodyhere').append('<div class="well">'+ggg[v]["text"]+'</div>');
+
+						if(ggg[v]["text"].length>3){
+							$('#bodyhere').append('<div class="well">'+ggg[v]["text"]+'</div>');
+						}
 					}
 				}
 				$('#commentbar').html("<input type='text' class='form-control' id='cmnt' placeholder='Add comment'><br><button class='btn btn-success' onclick='comment();'>Submit</button>");
@@ -158,7 +161,7 @@ function comment(){
 	var comnt=$('#cmnt').val();
 	var databaseref = firebase.database().ref();
 var thoughtsref=databaseref.child('thoughts/'+kk+'/comments');
-thoughtsref.push({"text":comnt});
+if(comnt.length>4)thoughtsref.push({"text":comnt});
 
 $('#myModal').modal('hide');
 
