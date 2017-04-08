@@ -131,10 +131,10 @@ mover.prototype.move=function(){
 	if(this.posy>height-this.size)this.posy=height-this.size;
 	if(dist(mouseX,mouseY,this.posx,this.posy)<this.size){
 		if(new Date().getTime()-this.t<25200000){
-		$('#goeshere').html(this.msg+"<br><br><i>Posted within 7 hours</i>");
+		$('#goeshere').html(this.msg.replace(/\n/g, "<br />")+"<br><br><i>Posted within 7 hours</i><br/><br/>");
 			}
 		else{
-			$('#goeshere').html(this.msg);
+			$('#goeshere').html(this.msg.replace(/\n/g, "<br />")+"<br/><br/>");
 		}
 		this.high=true;
 	}
