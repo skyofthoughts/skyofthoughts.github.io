@@ -33,7 +33,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-body">
-        <p id="bodyhere">Some text in the modal.</p>
+        <p id="bodyhere"></p>
       </div>
       <div id="commentbar"></div>
       <div id="keybar"></div>
@@ -68,7 +68,7 @@
 <script type="text/javascript">
 
 var mover=function(msg,com,ki,coms){
-	this.size=random(2,6);
+	this.size=random(1,5); //make the sizes smaller
 	this.cx=random(width);
 	this.cy=random(height);
 	this.dispx=0;
