@@ -1,22 +1,21 @@
 p {
-	text-align: center;
+	
+	 text-align: left ,center;
 }
 h1 {
-    text-align: center;
+     text-align: left;
 }
 
 .container {
-    padding: 20px;
-    background-color: #f1f1f1;
+    padding: 15px;
 }
 
 input[type=text], input[type=submit] {
-    width: 100%;
-    padding: 12px;
+    width: 60%;
+    padding: 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 
 input[type=checkbox] {
@@ -24,9 +23,13 @@ input[type=checkbox] {
 }
 
 input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
+   background: white;
+    color:black;
     border: none;
+    opacity:0.6;
+		font-family: 'Cutive Mono' !important;
+		cursor: pointer;
+
 }
 
 input[type=submit]:hover {
