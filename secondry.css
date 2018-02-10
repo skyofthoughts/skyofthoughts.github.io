@@ -1,45 +1,8 @@
-body{
-
-	background: #141414;
-	color: #aaa;
-}
 p {
 	text-align: center;
 }
 h1 {
     text-align: center;
-}
-
-#content{
-			position: relative; 
-			z-index: 2; 
-		}
-
-.button{
-	margin-top: 5%;
-	padding:10px 30px;
-	background: white;
-	border-radius: 20px;
-	color:black;
-	display: inline-block;
-	opacity:0.6;
-		font-family: 'Cutive Mono' !important;
-		cursor: pointer;
-
-}
-.footer{
-float: right;
-display: inline;
-margin-top: 7%;
-	font-size: 1.4em;
-	text-align: right;
-	font-family: 'La Belle Aurore' !important;
-}
-
-textarea{
-	width: 100%;
-	min-height: 100px;
-	background-color: transparent;
 }
 
 .container {
@@ -68,76 +31,4 @@ input[type=submit] {
 
 input[type=submit]:hover {
     opacity: 0.8;
-}
-.heading{
-	margin-top: 14vh;
-font-size: 6em;
-font-family: 'La Belle Aurore' !important;
-}
-.subtext{
-	margin-top: 5vh;
-	font-family: 'Cutive Mono' !important;
-	text-align: justify;
-}
-canvas {
-		position: fixed; 
-		top: 0; left: 0; 
-		z-index: 1; 
-		}
-#content{
-			position: relative; 
-			z-index: 2; 
-		}
-
-.button{
-	margin-top: 5%;
-	padding:10px 30px;
-	background: white;
-	border-radius: 20px;
-	color:black;
-	display: inline-block;
-	opacity:0.6;
-		font-family: 'Cutive Mono' !important;
-		cursor: pointer;
-
-}
-.footer{
-float: right;
-display: inline;
-margin-top: 7%;
-	font-size: 1.4em;
-	text-align: right;
-	font-family: 'La Belle Aurore' !important;
-}
-
-textarea{
-	width: 100%;
-	min-height: 100px;
-	background-color: transparent;
-}
-.messages{
-	margin-top: 10%;
-	font-family: 'Cutive Mono' !important;
-	color:#f1f1f1;
-}
-
-.footerp{
-	right:20px;
-	position: fixed;
-	top:85vh;
-	font-size: 1.4em;
-	font-family: 'La Belle Aurore' !important;
-}
-#goeshere{
-	position: absolute;
-
-}
-
-.floatnew{
-		cursor: pointer;
-}
-#reslist{
-	margin-top: 10%;
-	font-family: 'Cutive Mono' !important;
-
 }
