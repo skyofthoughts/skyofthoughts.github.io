@@ -1,0 +1,37 @@
+p {
+	
+	 text-align: left ,center;
+}
+h1 {
+     text-align: left;
+}
+
+.container {
+    padding: 15px;
+}
+
+input[type=text], input[type=submit] {
+    width: 60%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+input[type=checkbox] {
+    margin-top: 16px;
+}
+
+input[type=submit] {
+   background: white;
+    color:black;
+    border: none;
+    opacity:0.6;
+		font-family: 'Cutive Mono' !important;
+		cursor: pointer;
+
+}
+
+input[type=submit]:hover {
+    opacity: 0.8;
+}
