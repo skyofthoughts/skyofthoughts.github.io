@@ -39,7 +39,7 @@ window.addEventListener('touchstart', function() {
 function skip(v){
 	$('#content').fadeOut('slow', function() {
 		var msg=v===true?'Thank you. This message will now float away to the sky.':'No issues.';
-    $('#content').html("<div class='messages col-md-6 col-sm-12 col-xs-12'>"+msg+" You will now be taken to the sky of thoughts. The sky of thought shows that pain and sadness are universal part of human existence. We all are together in facing them. Come, let's go. <br><br> <a href='thoughts.html'>Proceed</a></div>");
+    $('#content').html("<div class='messages col-md-6 col-sm-12 col-xs-12'>"+msg+" You will now be taken to the sky of thoughts. The sky of thought shows that pain and sadness are universal part of human existence. We all are together in facing them. Come, let's go. <br><br> <a class='button' href='thoughts.html'>Proceed</a></div>");
     $('#content').fadeIn('slow');
 });
 }
