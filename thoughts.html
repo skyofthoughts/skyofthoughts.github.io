@@ -1,252 +1,257 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Sky of Thoughts</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta property="og:url"                content="https://skyofthoughts.github.io" />
-<meta property="og:type"               content="website" />
-<meta property="og:title"              content="KGP Sky of Thoughts" />
-<meta property="og:description"        content="You aren't all alone in the struggle. Let's talk about anxieties and depression." />
-<meta property="og:image"              content="https://skyofthoughts.github.io/img.JPG" />
+    <title>Sky of Thoughts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:url" content="https://skyofthoughts.github.io" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="KGP Sky of Thoughts" />
+    <meta property="og:description" content="You aren't all alone in the struggle. Let's talk about anxieties and depression."
+    />
+    <meta property="og:image" content="https://skyofthoughts.github.io/img.JPG" />
 </head>
 <link rel="stylesheet" type="text/css" href="main.css">
 <link href="https://fonts.googleapis.com/css?family=Cutive+Mono|La+Belle+Aurore" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- iconj.com favicon code -->
-<link rel="shortcut icon" href="http://www.iconj.com/icon.php?pid=47jp57ya82" type="image/x-icon" /> 
+<link rel="shortcut icon" href="http://www.iconj.com/icon.php?pid=47jp57ya82" type="image/x-icon" />
 <!-- end of iconj.com favicon code -->
 
 <body style="font-family:'Cutive Mono'">
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-49711524-7', 'auto');
-  ga('send', 'pageview');
+        ga('create', 'UA-49711524-7', 'auto');
+        ga('send', 'pageview');
 
-</script>
-<audio src="bg.mp3" autoplay loop>
-<p>If you are reading this, it is because your browser does not support the audio element.     </p>
-</audio>
-
-
-<div id="content" class="container">
-<div id="innercontent">
-<div class="messages" id="goeshere"></div>
+    </script>
+    <audio src="bg.mp3" autoplay loop>
+        <p>If you are reading this, it is because your browser does not support the audio element. </p>
+    </audio>
 
 
-<div class="footerp">
-
-<span class="floatnew" onclick="floatnew();">Float New Thought</span> | <a href="encouragement.html">Voices of Encouragement</a> | <a href="subscribe.html">Subscribe</a> | <a href="resources.html">Resources</a> | <a href="index.html">Home</a>
-
-
-</div>
+    <div id="content" class="container">
+        <div id="innercontent">
+            <div class="messages" id="goeshere"></div>
 
 
-</div>
-</div>
+            <div class="footerp">
+
+                <span class="floatnew" onclick="floatnew();">Float New Thought</span> | <a href="encouragement.html">Voices
+                    of Encouragement</a> | <a href="subscribe.html">Subscribe</a> | <a href="resources.html">Resources</a>
+                | <a href="index.html">Home</a>
 
 
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+            </div>
 
-    <!-- Modal content-->
-    <div class="modal-content" style="padding:0px 25px">
-      <div class="modal-body">
-        <p id="bodyhere">Some text in the modal.</p>
-      </div>
-      <div id="commentbar"></div>
-      <div id="keybar"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+
+        </div>
     </div>
 
-  </div>
-</div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="padding:0px 25px">
+                <div class="modal-body">
+                    <p id="bodyhere">Some text in the modal.</p>
+                </div>
+                <div id="commentbar"></div>
+                <div id="keybar"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDIqOo1dR5ylR6xeycO9ZFljD-TzhSZlOU",
-    authDomain: "skyofthoughts17.firebaseapp.com",
-    databaseURL: "https://skyofthoughts17.firebaseio.com",
-    projectId: "skyofthoughts17",
-    storageBucket: "skyofthoughts17.appspot.com",
-    messagingSenderId: "497409203328"
-  };
-  firebase.initializeApp(config);
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDIqOo1dR5ylR6xeycO9ZFljD-TzhSZlOU",
+        authDomain: "skyofthoughts17.firebaseapp.com",
+        databaseURL: "https://skyofthoughts17.firebaseio.com",
+        projectId: "skyofthoughts17",
+        storageBucket: "skyofthoughts17.appspot.com",
+        messagingSenderId: "497409203328"
+    };
+    firebase.initializeApp(config);
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
-var mover=function(msg,com,ki,coms,t){
-	this.msg=msg;
-	this.key=ki;
-	this.com=com;
-	this.size=constrain(2*map(msg.length,1,1000,7,25),7,30);
-	this.posx=random(width);
-	this.posy=random(height);
-	this.seed=parseInt(random(2000));
-	if(coms)this.coms=coms;
-	this.high=false;
-	if(t==undefined){
-		this.t=0;
-	}
-	else{
-		this.t=t;
-	}
-}
-function floatnew(){
-	$('#bodyhere').html("<textarea class='form-control' placeholder='How are you feeling?'></textarea><br><input type='checkbox' checked> Allow comments<span style='float:right'><span onclick='submit();' class='msgbtn'>Submit</span></span>");
-	$('#commentbar').html('');
-	$('#myModal').modal('show');
-}
-function submit(){
-var databaseref = firebase.database().ref();
-var thoughtsref=databaseref.child('thoughts');
-var jjj=new Date().getTime();
-var data={
-	"thought":$('textarea').val(),
-	"allowcomments":$('input[type="checkbox"]').is(":checked"),
-	"tim":jjj
-}
-thoughtsref.push(data);
-$('#myModal').modal('hide');
-}
-mover.prototype.move=function(){
-	
-
-	if(this.posx<this.size)this.posx=this.size;
-	if(this.posx>width-this.size)this.posx=width-this.size;
-	if(this.posy<this.size)this.posy=this.size;
-	if(this.posy>height-this.size)this.posy=height-this.size;
-	if(dist(mouseX,mouseY,this.posx,this.posy)<this.size){
-		if(new Date().getTime()-this.t<25200000){
-		$('#goeshere').html(this.msg.replace(/\n/g, "<br />")+"<br><br><i>Posted within 7 hours</i><br/><br/>");
-			}
-		else{
-			$('#goeshere').html(this.msg.replace(/\n/g, "<br />")+"<br/><br/>");
-		}
-		this.high=true;
-	}
-	else{
-		this.high=false;
-	}
-
-	if(mouseIsPressed && $('#myModal').hasClass('in')==false){
-		if(dist(mouseX,mouseY,this.posx,this.posy)<this.size){
-			//clicked
-			$('#bodyhere').html('<div class="thething">'+this.msg.replace(/\n/g, "<br />")+'</div>');
-			if(this.com){
-				kk=this.key;
-				//show comment bar
-
-				if(this.coms){
-					ggg=this.coms;
-					for(var v in this.coms){
-
-						if(ggg[v]["text"].length>3){
-							$('#bodyhere').append('<div class="well">'+ggg[v]["text"]+'</div>');
-						}
-					}
-				}
-				$('#commentbar').html("<input type='text' class='form-control' id='cmnt' placeholder='Add comment'><br><button class='btn btn-success' onclick='comment();'>Submit</button>");
-			}
-			else{
-				$('#commentbar').html('');
-			}
-			$('#myModal').modal('show');
-		}
-	}
-}
+    var mover = function (msg, com, ki, coms, t) {
+        this.msg = msg;
+        this.key = ki;
+        this.com = com;
+        this.size = constrain(2 * map(msg.length, 1, 1000, 7, 25), 7, 30);
+        this.posx = random(width);
+        this.posy = random(height);
+        this.seed = parseInt(random(2000));
+        if (coms) this.coms = coms;
+        this.high = false;
+        if (t == undefined) {
+            this.t = 0;
+        }
+        else {
+            this.t = t;
+        }
+    }
+    function floatnew() {
+        $('#bodyhere').html("<textarea class='form-control' placeholder='How are you feeling?'></textarea><br><input type='checkbox' checked> Allow comments<span style='float:right'><span onclick='submit();' class='msgbtn'>Submit</span></span>");
+        $('#commentbar').html('');
+        $('#myModal').modal('show');
+    }
+    function submit() {
+        var databaseref = firebase.database().ref();
+        var thoughtsref = databaseref.child('thoughts');
+        var jjj = new Date().getTime();
+        var data = {
+            "thought": $('textarea').val(),
+            "allowcomments": $('input[type="checkbox"]').is(":checked"),
+            "tim": jjj
+        }
+        thoughtsref.push(data);
+        $('#myModal').modal('hide');
+    }
+    mover.prototype.move = function () {
 
 
-function comment(){
+        if (this.posx < this.size) this.posx = this.size;
+        if (this.posx > width - this.size) this.posx = width - this.size;
+        if (this.posy < this.size) this.posy = this.size;
+        if (this.posy > height - this.size) this.posy = height - this.size;
+        if (dist(mouseX, mouseY, this.posx, this.posy) < this.size) {
+            if (new Date().getTime() - this.t < 25200000) {
+                $('#goeshere').html(this.msg.replace(/\n/g, "<br />") + "<br><br><i>Posted within 7 hours</i><br/><br/>");
+            }
+            else {
+                $('#goeshere').html(this.msg.replace(/\n/g, "<br />") + "<br/><br/>");
+            }
+            this.high = true;
+        }
+        else {
+            this.high = false;
+        }
 
-	var comnt=$('#cmnt').val();
-	var databaseref = firebase.database().ref();
-var thoughtsref=databaseref.child('thoughts/'+kk+'/comments');
-if(comnt.length>4)thoughtsref.push({"text":comnt});
+        if (mouseIsPressed && $('#myModal').hasClass('in') == false) {
+            if (dist(mouseX, mouseY, this.posx, this.posy) < this.size) {
+                //clicked
+                $('#bodyhere').html('<div class="thething">' + this.msg.replace(/\n/g, "<br />") + '</div>');
+                if (this.com) {
+                    kk = this.key;
+                    //show comment bar
 
-$('#myModal').modal('hide');
+                    if (this.coms) {
+                        ggg = this.coms;
+                        for (var v in this.coms) {
 
-
-}
-mover.prototype.show=function(){
-	if(this.msg.length<2)return;
-	//text(this.msg,this.posx,this.posy);
-	var daca=(new Date().getTime()-this.t<25200000)?'rgba(69,132,254,0.5)':'rgba(170,170,170,0.4)';
-	var ff=this.high?'rgba(242,202,102,0.5)':daca;
-	fill(ff);
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- var ismobile=true;
-}
-else{
-	var ismobile=false;
-}
-	if(this.msg.length<15 && ismobile==false){
-		noStroke();
-		textFont('Cutive Mono');
-		textSize(14);
-		text(this.msg,this.posx+20*(noise(this.seed+frameCount/100)-0.5)-20,this.posy+20*(noise(this.seed+4567+frameCount/100)-0.5)+5);
-	}
-	else{
-		if(this.com)stroke(255);
-		else noStroke();
-	ellipse(this.posx+20*(noise(this.seed+frameCount/100)-0.5),this.posy+20*(noise(this.seed+4567+frameCount/100)-0.5),this.size,this.size);
-}
-}
-var xaxu=[];
-
-function setup() { 
-fill(255);
-textSize(19);
-
-	noStroke();
-	createCanvas(windowWidth, windowHeight);
-	var databaseref = firebase.database().ref();
-	var thoughtsref=databaseref.child('thoughts');
+                            if (ggg[v]["text"].length > 3) {
+                                $('#bodyhere').append('<div class="well">' + ggg[v]["text"] + '</div>');
+                            }
+                        }
+                    }
+                    $('#commentbar').html("<input type='text' class='form-control' id='cmnt' placeholder='Add comment'><br><button class='btn btn-success' onclick='comment();'>Submit</button>");
+                }
+                else {
+                    $('#commentbar').html('');
+                }
+                $('#myModal').modal('show');
+            }
+        }
+    }
 
 
-	arr=[];
-	thoughtsref.on("value", function(snapshot, prevChildKey) {
-		arr=[];
-  		var newPost = snapshot.val();
-  		arr = Object.keys(newPost).map(function (key) { return {"key":key,"post":newPost[key]} });
-  		for(var i=0;i<arr.length;i++)xaxu.push(new mover(arr[i]["post"]["thought"],arr[i]["post"]["allowcomments"],arr[i]["key"],arr[i]["post"]["comments"],arr[i]["post"]["tim"]));
-  });
+    function comment() {
+
+        var comnt = $('#cmnt').val();
+        var databaseref = firebase.database().ref();
+        var thoughtsref = databaseref.child('thoughts/' + kk + '/comments');
+        if (comnt.length > 4) thoughtsref.push({ "text": comnt });
+
+        $('#myModal').modal('hide');
 
 
+    }
+    mover.prototype.show = function () {
+        if (this.msg.length < 2) return;
+        //text(this.msg,this.posx,this.posy);
+        var daca = (new Date().getTime() - this.t < 25200000) ? 'rgba(69,132,254,0.5)' : 'rgba(170,170,170,0.4)';
+        var ff = this.high ? 'rgba(242,202,102,0.5)' : daca;
+        fill(ff);
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            var ismobile = true;
+        }
+        else {
+            var ismobile = false;
+        }
+        if (this.msg.length < 15 && ismobile == false) {
+            noStroke();
+            textFont('Cutive Mono');
+            textSize(14);
+            text(this.msg, this.posx + 20 * (noise(this.seed + frameCount / 100) - 0.5) - 20, this.posy + 20 * (noise(this.seed + 4567 + frameCount / 100) - 0.5) + 5);
+        }
+        else {
+            if (this.com) stroke(255);
+            else noStroke();
+            ellipse(this.posx + 20 * (noise(this.seed + frameCount / 100) - 0.5), this.posy + 20 * (noise(this.seed + 4567 + frameCount / 100) - 0.5), this.size, this.size);
+        }
+    }
+    var xaxu = [];
+
+    function setup() {
+        fill(255);
+        textSize(19);
+
+        noStroke();
+        createCanvas(windowWidth, windowHeight);
+        var databaseref = firebase.database().ref();
+        var thoughtsref = databaseref.child('thoughts');
+
+
+        arr = [];
+        thoughtsref.on("value", function (snapshot, prevChildKey) {
+            arr = [];
+            var newPost = snapshot.val();
+            arr = Object.keys(newPost).map(function (key) { return { "key": key, "post": newPost[key] } });
+            for (var i = 0; i < arr.length; i++)xaxu.push(new mover(arr[i]["post"]["thought"], arr[i]["post"]["allowcomments"], arr[i]["key"], arr[i]["post"]["comments"], arr[i]["post"]["tim"]));
+        });
 
 
 
-	
-}
-function draw() {
-	background(20);
-	
-	for(var i=0;i<arr.length;i++){
-		xaxu[i].move();
-		xaxu[i].show();
-	}
 
 
 
-}
+    }
+    function draw() {
+        background(20);
 
-function windowResized() {
-	resizeCanvas(windowWidth, windowHeight);
-}
+        for (var i = 0; i < arr.length; i++) {
+            xaxu[i].move();
+            xaxu[i].show();
+        }
+
+
+
+    }
+
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+    }
 
 </script>
+
 </html>
